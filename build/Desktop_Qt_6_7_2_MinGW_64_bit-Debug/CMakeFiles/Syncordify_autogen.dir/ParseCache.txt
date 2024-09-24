@@ -557,6 +557,6 @@ C:/Syncordify/mainwindow.h
  mdp:C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Syncordify_autogen/moc_predefs.h
  mdp:C:/Syncordify/mainwindow.h
 C:/Syncordify/audiocontroller.cpp
-C:/Syncordify/main.cpp
 C:/Syncordify/mainwindow.cpp
  uic:./ui_mainwindow.h
+C:/Syncordify/main.cpp

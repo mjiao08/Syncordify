@@ -12,8 +12,13 @@ using std::string;
 
 class AudioController {
 public:
-    // AudioController();
+    AudioController();
+    ~AudioController() = default;
+
     void CheckAndAdjustAppVolume();
+
+    float adjustedVolume;
+    float activationThreshold;
 
 private:
     string GetProcessPath(DWORD processId);

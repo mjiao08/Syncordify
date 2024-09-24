@@ -17,11 +17,17 @@ public:
     ~MainWindow();
 
 private slots:
-    // void onAdjustVolumeClicked();
+    void onTimeout();
+
+    void on_adjustedVolumeSlider_valueChanged(int value);
+    void on_adjustedVolumeSpinBox_valueChanged(int value);
+    void on_activationThresholdSlider_valueChanged(int value);
+    void on_activationThresholdDoubleSpinBox_valueChanged(double valueDecimal);
 
 private:
     Ui::MainWindow *ui;
     AudioController *audioController;
+    QTimer *timer;
 };
 
 #endif // MAINWINDOW_H

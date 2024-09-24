@@ -33,6 +33,11 @@ public:
         DWORD *pdwHardwareSupportMask) = 0;
 };
 
+AudioController::AudioController() {
+    adjustedVolume = 0.5f;
+    activationThreshold = 0.05f;
+}
+
 string AudioController::GetProcessPath(DWORD processId) {
     HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, processId);
 
@@ -147,7 +152,7 @@ bool AudioController::IsDiscordActive(IAudioSessionEnumerator* pSessionEnumerato
             printf("Discord Peak Audio Level: %f\n", peakLevel);
             pMeterInfo->Release();
 
-            if (peakLevel > 0.05) {
+            if (peakLevel > activationThreshold) {
                 pSessionControl2->Release();
                 pSessionControl->Release();
                 return true;
@@ -182,7 +187,7 @@ void AudioController::CheckAndAdjustAppVolume() {
     CHECK_HR(hr, "IAudioSessionManager2::GetSessionEnumerator");
 
     if (IsDiscordActive(pSessionEnumerator)) {
-        AdjustAppVolume(0.5f, pSessionEnumerator);
+        AdjustAppVolume(adjustedVolume, pSessionEnumerator);
     } else {
         AdjustAppVolume(1.0f, pSessionEnumerator);
     }

@@ -28,21 +28,22 @@ void MainWindow::onTimeout() {
 }
 
 void MainWindow::on_adjustedVolumeSlider_valueChanged(int value) {
-    float valueDecimal = value / 100;
+    float valueDecimal = (float)value / 100;
 
     ui->adjustedVolumeSpinBox->setValue(value);
     audioController->adjustedVolume = valueDecimal;
+    qDebug() << "adjustedVolume after adjustedVolumeSlider function: " << valueDecimal << "\n";
 }
 
 void MainWindow::on_adjustedVolumeSpinBox_valueChanged(int value) {
-    float valueDecimal = value / 100;
+    float valueDecimal = (float)value / 100;
 
     ui->adjustedVolumeSlider->setValue(value);
     audioController->adjustedVolume = valueDecimal;
 }
 
 void MainWindow::on_activationThresholdSlider_valueChanged(int value) {
-    float valueDecimal = value / 100;
+    float valueDecimal = (float)value / 100;
 
     ui->activationThresholdDoubleSpinBox->setValue(valueDecimal);
     audioController->activationThreshold = valueDecimal;

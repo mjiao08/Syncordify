@@ -43,12 +43,7 @@ else()
     endif()
 endif()
 
-target_link_libraries(Syncordify PRIVATE
-    Qt${QT_VERSION_MAJOR}::Widgets
-    ole32
-    oleaut32
-    winmm
-)
+target_link_libraries(Syncordify PRIVATE Qt${QT_VERSION_MAJOR}::Widgets)
 
 add_definitions(-DWIN32_LEAN_AND_MEAN -DWIN32_EXTRA_LEAN)
 add_definitions(-DUNICODE -D_UNICODE)

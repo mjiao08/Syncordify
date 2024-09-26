@@ -33,20 +33,15 @@ public:
         DWORD *pdwHardwareSupportMask) = 0;
 };
 
-AudioController::AudioController() {
-    QSettings settings("settings.ini", QSettings::IniFormat);
-
-    adjustedVolume = settings.value("adjustedVolume", 0.5f).toFloat();
-    activationThreshold = settings.value("activationThreshold", 0.05f).toFloat();
-}
-
 AudioController::~AudioController() {
+    // Save user settings for next session
     QSettings settings("settings.ini", QSettings::IniFormat);
 
     settings.setValue("adjustedVolume", adjustedVolume);
     settings.setValue("activationThreshold", activationThreshold);
 }
 
+// Function to get the whole path to the .exe of the process passed in
 string AudioController::GetProcessPath(DWORD processId) {
     HANDLE hProcess = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, processId);
 
@@ -69,11 +64,13 @@ string AudioController::GetProcessPath(DWORD processId) {
     return path;
 }
 
+// Function to extract only the process name from the entire path
 string AudioController::GetProcessName(string processPath) {
     size_t pos = processPath.find_last_of('\\');
     return (pos != string::npos) ? processPath.substr(pos + 1) : "";
 }
 
+// Function to adjust the volume of the desired application (current hard coded to Spotify)
 void AudioController::AdjustAppVolume(float targetVolume, IAudioSessionEnumerator* pSessionEnumerator) {
     int sessionCount;
     HRESULT hr = pSessionEnumerator->GetCount(&sessionCount);
@@ -120,6 +117,7 @@ void AudioController::AdjustAppVolume(float targetVolume, IAudioSessionEnumerato
     }
 }
 
+// Function to detect if sound is present in Discord
 bool AudioController::IsDiscordActive(IAudioSessionEnumerator* pSessionEnumerator) {
     int sessionCount;
     HRESULT hr = pSessionEnumerator->GetCount(&sessionCount);
@@ -175,6 +173,7 @@ bool AudioController::IsDiscordActive(IAudioSessionEnumerator* pSessionEnumerato
     return false;
 }
 
+// Function to check for Discord sound and adjust Spotify volume as set by user
 void AudioController::CheckAndAdjustAppVolume() {
     HRESULT hr = CoInitializeEx(nullptr, COINIT_APARTMENTTHREADED);
     CHECK_HR(hr, "CoInitializeEx");

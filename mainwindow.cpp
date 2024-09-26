@@ -5,10 +5,11 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow) {
+    , ui(new Ui::MainWindow)
+    , audioController(new AudioController()) {
     ui->setupUi(this);
 
-    audioController = new AudioController();
+    initializeSettings();
 
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::onTimeout);
@@ -18,6 +19,18 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow() {
     delete audioController;
     delete ui;
+}
+
+void MainWindow::initializeSettings() {
+    QSettings settings("settings.ini", QSettings::IniFormat);
+
+    // Set variables
+    audioController->adjustedVolume = settings.value("adjustedVolume", 0.5f).toFloat();
+    audioController->activationThreshold = settings.value("activationThreshold", 0.05f).toFloat();
+
+    // Update spin boxes (this triggers the valueChanged functions to also update the sliders)
+    ui->adjustedVolumeSpinBox->setValue((int)(audioController->adjustedVolume * 100));
+    ui->activationThresholdDoubleSpinBox->setValue(audioController->activationThreshold);
 }
 
 void MainWindow::onTimeout() {

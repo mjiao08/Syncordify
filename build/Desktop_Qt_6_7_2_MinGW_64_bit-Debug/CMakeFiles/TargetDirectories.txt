@@ -1,9 +1,0 @@
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/Syncordify.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/list_install_components.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/local.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/install/strip.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/Syncordify_autogen_timestamp_deps.dir
-C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/CMakeFiles/Syncordify_autogen.dir

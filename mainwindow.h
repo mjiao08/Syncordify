@@ -17,13 +17,14 @@ public:
     ~MainWindow();
 
 private slots:
-    void onTimeout();
-    void initializeSettings();
+    void OnTimeout();
+    void InitializeSettings();
 
-    void on_adjustedVolumeSlider_valueChanged(int value);
-    void on_adjustedVolumeSpinBox_valueChanged(int value);
-    void on_activationThresholdSlider_valueChanged(int value);
-    void on_activationThresholdDoubleSpinBox_valueChanged(double valueDecimal);
+    float IntToDecimal(int value);
+    void OnAdjustedVolumeSliderValueChanged(int value);
+    void OnAdjustedVolumeSpinBoxValueChanged(int value);
+    void OnActivationThresholdSliderValueChanged(int value);
+    void OnActivationThresholdDoubleSpinBoxValueChanged(double valueDecimal);
 
 private:
     Ui::MainWindow *ui;

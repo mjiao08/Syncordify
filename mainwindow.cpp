@@ -9,10 +9,27 @@ MainWindow::MainWindow(QWidget *parent)
     , audioController(new AudioController()) {
     ui->setupUi(this);
 
-    initializeSettings();
+    connect(ui->adjustedVolumeSlider,
+            &QSlider::valueChanged,
+            this,
+            &MainWindow::OnAdjustedVolumeSliderValueChanged);
+    connect(ui->adjustedVolumeSpinBox,
+            &QSpinBox::valueChanged,
+            this,
+            &MainWindow::OnAdjustedVolumeSpinBoxValueChanged);
+    connect(ui->activationThresholdSlider,
+            &QSlider::valueChanged,
+            this,
+            &MainWindow::OnActivationThresholdSliderValueChanged);
+    connect(ui->activationThresholdDoubleSpinBox,
+            &QDoubleSpinBox::valueChanged,
+            this,
+            &MainWindow::OnActivationThresholdDoubleSpinBoxValueChanged);
+
+    InitializeSettings();
 
     timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MainWindow::onTimeout);
+    connect(timer, &QTimer::timeout, this, &MainWindow::OnTimeout);
     timer->start(100);
 }
 
@@ -21,47 +38,47 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::initializeSettings() {
+void MainWindow::InitializeSettings() {
     QSettings settings("settings.ini", QSettings::IniFormat);
 
     // Set variables
     audioController->adjustedVolume = settings.value("adjustedVolume", 0.5f).toFloat();
     audioController->activationThreshold = settings.value("activationThreshold", 0.05f).toFloat();
 
-    // Update spin boxes (this triggers the valueChanged functions to also update the sliders)
+    // Update spin box values (this triggers the valueChanged functions to also update the slider positions)
     ui->adjustedVolumeSpinBox->setValue((int)(audioController->adjustedVolume * 100));
     ui->activationThresholdDoubleSpinBox->setValue(audioController->activationThreshold);
 }
 
-void MainWindow::onTimeout() {
+void MainWindow::OnTimeout() {
     audioController->CheckAndAdjustAppVolume();
     printf("Adjusted Volume: %f\n", audioController->adjustedVolume);
     printf("Activation Threshold: %f\n", audioController->activationThreshold);
     printf("\n");
 }
 
-void MainWindow::on_adjustedVolumeSlider_valueChanged(int value) {
-    float valueDecimal = (float)value / 100;
+float MainWindow::IntToDecimal(int value) {
+    return (float)value / 100;
+}
 
+void MainWindow::OnAdjustedVolumeSliderValueChanged(int value) {
     ui->adjustedVolumeSpinBox->setValue(value);
-    audioController->adjustedVolume = valueDecimal;
+    audioController->adjustedVolume = IntToDecimal(value);
 }
 
-void MainWindow::on_adjustedVolumeSpinBox_valueChanged(int value) {
-    float valueDecimal = (float)value / 100;
-
+void MainWindow::OnAdjustedVolumeSpinBoxValueChanged(int value) {
     ui->adjustedVolumeSlider->setValue(value);
-    audioController->adjustedVolume = valueDecimal;
+    audioController->adjustedVolume = IntToDecimal(value);
 }
 
-void MainWindow::on_activationThresholdSlider_valueChanged(int value) {
-    float valueDecimal = (float)value / 100;
+void MainWindow::OnActivationThresholdSliderValueChanged(int value) {
+    float valueDecimal = IntToDecimal(value);
 
     ui->activationThresholdDoubleSpinBox->setValue(valueDecimal);
     audioController->activationThreshold = valueDecimal;
 }
 
-void MainWindow::on_activationThresholdDoubleSpinBox_valueChanged(double valueDecimal) {
+void MainWindow::OnActivationThresholdDoubleSpinBoxValueChanged(double valueDecimal) {
     int valueInteger = valueDecimal * 100;
 
     ui->activationThresholdSlider->setValue(valueInteger);

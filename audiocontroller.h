@@ -7,7 +7,6 @@
 #include <endpointvolume.h>
 #include <audiopolicy.h>
 #include <string>
-#include <iomanip>
 
 #include <QSettings>
 

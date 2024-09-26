@@ -1,5 +1,6 @@
 C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Syncordify_autogen/EWIEGA46WW/moc_mainwindow.cpp: C:/Syncordify/mainwindow.h \
   C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Syncordify_autogen/moc_predefs.h \
+  C:/Qt/6.7.2/mingw_64/include/QtCore/QSettings \
   C:/Qt/6.7.2/mingw_64/include/QtCore/q20functional.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/q20memory.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/q20type_traits.h \
@@ -73,6 +74,7 @@ C:/Syncordify/build/Desktop_Qt_6_7_2_MinGW_64_bit-Debug/Syncordify_autogen/EWIEG
   C:/Qt/6.7.2/mingw_64/include/QtCore/qscopedpointer.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qscopeguard.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qset.h \
+  C:/Qt/6.7.2/mingw_64/include/QtCore/qsettings.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qshareddata.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qshareddata_impl.h \
   C:/Qt/6.7.2/mingw_64/include/QtCore/qsharedpointer.h \

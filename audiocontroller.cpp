@@ -34,8 +34,17 @@ public:
 };
 
 AudioController::AudioController() {
-    adjustedVolume = 0.5f;
-    activationThreshold = 0.05f;
+    QSettings settings("../settings.ini", QSettings::IniFormat);
+
+    adjustedVolume = settings.value("adjustedVolume", 0.5f).toFloat();
+    activationThreshold = settings.value("activationThreshold", 0.05f).toFloat();
+}
+
+AudioController::~AudioController() {
+    QSettings settings("../settings.ini", QSettings::IniFormat);
+
+    settings.setValue("adjustedVolume", adjustedVolume);
+    settings.setValue("activationThreshold", activationThreshold);
 }
 
 string AudioController::GetProcessPath(DWORD processId) {

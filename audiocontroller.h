@@ -8,12 +8,14 @@
 #include <audiopolicy.h>
 #include <string>
 
+#include <QSettings>
+
 using std::string;
 
 class AudioController {
 public:
     AudioController();
-    ~AudioController() = default;
+    ~AudioController();
 
     void CheckAndAdjustAppVolume();
 

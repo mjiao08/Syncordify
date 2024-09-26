@@ -32,7 +32,6 @@ void MainWindow::on_adjustedVolumeSlider_valueChanged(int value) {
 
     ui->adjustedVolumeSpinBox->setValue(value);
     audioController->adjustedVolume = valueDecimal;
-    qDebug() << "adjustedVolume after adjustedVolumeSlider function: " << valueDecimal << "\n";
 }
 
 void MainWindow::on_adjustedVolumeSpinBox_valueChanged(int value) {

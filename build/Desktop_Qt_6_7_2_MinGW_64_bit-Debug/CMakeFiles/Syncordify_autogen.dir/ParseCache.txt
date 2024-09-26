@@ -2,6 +2,7 @@
 C:/Syncordify/audiocontroller.h
 C:/Syncordify/mainwindow.h
  mmc:Q_OBJECT
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/QSettings
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20functional.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20memory.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/q20type_traits.h
@@ -75,6 +76,7 @@ C:/Syncordify/mainwindow.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qscopedpointer.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qscopeguard.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qset.h
+ mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qsettings.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qshareddata.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qshareddata_impl.h
  mdp:C:/Qt/6.7.2/mingw_64/include/QtCore/qsharedpointer.h

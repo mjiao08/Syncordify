@@ -34,14 +34,14 @@ public:
 };
 
 AudioController::AudioController() {
-    QSettings settings("../settings.ini", QSettings::IniFormat);
+    QSettings settings("settings.ini", QSettings::IniFormat);
 
     adjustedVolume = settings.value("adjustedVolume", 0.5f).toFloat();
     activationThreshold = settings.value("activationThreshold", 0.05f).toFloat();
 }
 
 AudioController::~AudioController() {
-    QSettings settings("../settings.ini", QSettings::IniFormat);
+    QSettings settings("settings.ini", QSettings::IniFormat);
 
     settings.setValue("adjustedVolume", adjustedVolume);
     settings.setValue("activationThreshold", activationThreshold);
